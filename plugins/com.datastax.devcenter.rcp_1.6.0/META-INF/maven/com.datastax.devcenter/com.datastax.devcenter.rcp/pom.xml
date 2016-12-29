@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.datastax.devcenter</groupId>
+        <artifactId>com.datastax.devcenter.parent</artifactId>
+        <version>1.6.0</version>
+        <relativePath>../com.datastax.devcenter.parent</relativePath>
+    </parent>
+
+    <artifactId>com.datastax.devcenter.rcp</artifactId>
+    <packaging>eclipse-plugin</packaging>
+
+    <build>
+        <plugins>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>current-year</id>
+                        <goals>
+                            <goal>timestamp-property</goal>
+                        </goals>
+                        <configuration>
+                            <locale>en</locale>
+                            <name>year</name>
+                            <pattern>yyyy</pattern>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>generate-about-mappings</id>
+                        <phase>process-resources</phase>
+                        <configuration>
+                            <target>
+                                <echo file="${basedir}/about.mappings" append="false">0=${unqualifiedVersion}${line.separator}</echo>
+                                <echo file="${basedir}/about.mappings" append="true" >1=${year}${line.separator}</echo>
+                            </target>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+
+</project>

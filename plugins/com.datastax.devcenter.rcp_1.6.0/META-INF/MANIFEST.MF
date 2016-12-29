@@ -1,0 +1,30 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: com.datastax.devcenter.rcp;singleton:=true
+Archiver-Version: Plexus Archiver
+Built-By: jenkins
+Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,org.eclipse.ui
+ .ide,org.eclipse.core.resources,org.eclipse.e4.ui.css.swt.theme,com.d
+ atastax.driver.core,com.datastax.devcenter.common,com.datastax.devcen
+ ter.ui,org.eclipse.core.commands,org.eclipse.core.databinding,org.ecl
+ ipse.core.databinding.property,org.apache.httpcomponents.httpclient;b
+ undle-version="4.3.6",org.apache.httpcomponents.httpcore;bundle-versi
+ on="4.3.3",com.google.guava
+Bundle-ManifestVersion: 2
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: DataStax
+Import-Package: com.datastax.devcenter.cql.ui.dialogs,org.codehaus.jac
+ kson,org.codehaus.jackson.map,org.eclipse.core.databinding.beans,org.
+ eclipse.jface.databinding.fieldassist,org.eclipse.jface.databinding.s
+ wt
+Export-Package: com.datastax.devcenter.rcp.ui.jobs,com.datastax.devcen
+ ter.rcp.ui.models,com.datastax.devcenter.rcp.ui.validators,com.datast
+ ax.devcenter.rcp.webclient
+Bundle-Name: DataStax DevCenter RCP Application
+Bundle-Version: 1.6.0
+Bundle-Localization: plugin
+Bundle-Activator: com.datastax.devcenter.rcp.RcpActivator
+Created-By: Apache Maven 3.3.3
+Build-Jdk: 1.8.0_74
+Eclipse-BundleShape: dir
+

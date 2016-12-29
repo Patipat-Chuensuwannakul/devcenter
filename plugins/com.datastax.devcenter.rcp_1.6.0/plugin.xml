@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="com.datastax.devcenter.rcp.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="com.datastax.devcenter.rcp.application"
+            name="DevCenter">
+         <property
+               name="preferenceCustomization"
+               value="plugin_customization.ini">
+         </property>
+         <property
+               name="appName"
+               value="DevCenter">
+     </property>
+		  <property
+				name="cssTheme"
+				value="org.eclipse.e4.ui.css.theme.e4_default">
+		  </property>
+		  <property
+				name="applicationCSSResources"
+          value="platform:/plugin/com.datastax.devcenter.rcp/css/images/">
+		  </property>
+		  <property name="windowImages" value="icons/devcenter_16.png,icons/devcenter_32.png,icons/devcenter_48.png,icons/devcenter_64.png,icons/devcenter_128.png">
+          </property>
+    <property
+          name="aboutImage"
+          value="icons/devcenter_48.png">
+    </property>
+    <property
+          name="aboutText"
+          value="%aboutText">
+    </property>
+    <property
+          name="startupProgressRect"
+          value="0,344,622,12">
+    </property>
+      </product>
+   </extension>
+   <extension
+         point="org.eclipse.e4.ui.css.swt.theme">
+      <theme
+            basestylesheeturi="css/e4_default.css"
+            id="org.eclipse.e4.ui.css.theme.e4_default.noos"
+            label="%theme.default">
+      </theme>
+      <theme
+            basestylesheeturi="css/e4_classic_winxp.css"
+            id="org.eclipse.e4.ui.css.theme.e4_classic"
+            label="%theme.classic">
+      </theme>
+      <theme
+            basestylesheeturi="css/e4_default_gtk.css"
+            id="org.eclipse.e4.ui.css.theme.e4_default"
+            label="%theme.gtk"
+            os="linux">
+      </theme>
+      <theme
+            basestylesheeturi="css/e4_default_mac.css"
+            id="org.eclipse.e4.ui.css.theme.e4_default"
+            label="%theme.mac"
+            os="macosx">
+      </theme>
+      <theme
+            basestylesheeturi="css/e4_default_win7.css"
+            id="org.eclipse.e4.ui.css.theme.e4_default"
+            label="%theme.win7"
+            os="win32"
+            os_version="6.1">
+      </theme>
+            <theme
+                  basestylesheeturi="css/e4_default_winxp_blu.css"
+                  id="org.eclipse.e4.ui.css.theme.e4_default"
+                  label="%theme.winxpBlue"
+                  os="win32">
+      </theme>
+	  <theme
+            basestylesheeturi="css/e4_default_winxp_olv.css"
+            id="org.eclipse.e4.ui.css.theme.e4_default.xpolive"
+            label="%theme.winxpOlive"
+            os="win32">
+      </theme>
+   <theme
+         basestylesheeturi="css/e4_classic_win7.css"
+         id="org.eclipse.e4.ui.css.theme.e4_classic"
+         label="%theme.win7Classic"
+         os="win32"
+         os_version="6.1">
+   </theme>
+   <theme
+         basestylesheeturi="css/e4_default_gtk.css"
+         id="org.eclipse.e4.ui.css.theme.e4_default"
+         label="%theme.solaris"
+         os="solaris">
+   </theme>
+   <theme
+         basestylesheeturi="css/e4_default_gtk.css"
+         id="org.eclipse.e4.ui.css.theme.e4_default"
+         label="%theme.aix"
+         os="aix">
+   </theme>
+   <theme
+         basestylesheeturi="css/e4_classic_winxp.css"
+         id="org.eclipse.e4.ui.css.theme.e4_default"
+         label="%theme.hpux"
+         os="hpux">
+   </theme>
+      </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            description="DevCenter Help"
+            id="com.datastax.devcenter.commands.help"
+            name="DevCenter Help">
+      </category>
+      <command
+            categoryId="com.datastax.devcenter.commands.help"
+            defaultHandler="com.datastax.devcenter.rcp.ui.handlers.SubmitFeedbackHandler"
+            id="com.datastax.devcenter.rcp.commands.SubmitFeedback"
+            name="Submit Feedback">
+      </command>
+      <command
+            categoryId="com.datastax.devcenter.commands.help"
+            defaultHandler="com.datastax.devcenter.rcp.ui.handlers.SolrRestToCQLHandler"
+            id="com.datastax.devcenter.rcp.commands.SolrRestToCQLHandler"
+            name="Convert Solr REST URI to CQL">
+      </command>
+      <command
+            categoryId="com.datastax.devcenter.commands.help"
+            defaultHandler="com.datastax.devcenter.rcp.ui.handlers.CQLOnlineTrainingHandler"
+            id="com.datastax.devcenter.rcp.commands.CQLOnlineTraining"
+            name="CQL Online Training">
+      </command>
+   </extension>
+   <extension point="org.eclipse.ui.menus">
+      <menuContribution locationURI="menu:org.eclipse.ui.main.menu">
+         <menu id="feedback.menu.id" label="Feedback">
+            <command
+               commandId="com.datastax.devcenter.rcp.commands.SubmitFeedback"
+               label="Submit Feedback"
+               style="push"
+               tooltip="Submits feedback on DevCenter">
+            </command>
+         </menu>
+         <menu id="solrresttocql.menu.id" label="New CQL Query from Solr REST">
+            <command
+               commandId="com.datastax.devcenter.rcp.commands.SolrRestToCQLHandler"
+               label="New CQL Query from Solr REST"
+               style="push"
+               tooltip="Converts Solr REST URL to CQL Query">
+            </command>
+         </menu>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="menu:help">
+         <command
+               commandId="com.datastax.devcenter.rcp.commands.CQLOnlineTraining"
+               label="CQL Online Training"
+               style="push">
+         </command>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="com.datastax.devcenter.rcp.ui.prefs.UpdateAndUsagePreferencesPage"
+            id="com.datastax.devcenter.rcp.ui.prefs.UpdateAndUsagePreferencesPage"
+            name="Update">
+      </page>
+   </extension>
+</plugin>
